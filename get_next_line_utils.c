@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:44:40 by maustel           #+#    #+#             */
-/*   Updated: 2023/11/24 10:28:15 by maustel          ###   ########.fr       */
+/*   Updated: 2023/11/24 10:33:39 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*write_line(char *rest)
 	i = 0;
 	while (rest[i] != '\0' && rest[i] != '\n')
 		i++;
-	line = ft_calloc(i + 2, 1);
+	line = gnl_calloc(i + 2, 1);
 	i = 0;
 	while (rest[i] != '\0' && rest[i] != '\n')
 	{
