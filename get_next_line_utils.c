@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:44:40 by maustel           #+#    #+#             */
-/*   Updated: 2023/11/24 10:33:39 by maustel          ###   ########.fr       */
+/*   Updated: 2023/11/30 11:47:32 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,19 @@ char	*write_line(char *rest)
 	while (rest[i] != '\0' && rest[i] != '\n')
 		i++;
 	line = gnl_calloc(i + 2, 1);
+	if (!line)
+		return (NULL);
 	i = 0;
 	while (rest[i] != '\0' && rest[i] != '\n')
 	{
 		line[i] = rest [i];
 		i++;
 	}
-	if (rest[i] == '\n' || rest[i] == '\0')
-	{
-		line[i] = rest[i];
-		if (rest[i] == '\n')
-			i++;
-	}
-	len = ft_strlen(rest);
-	rest = ft_memmove(rest, rest + i, len - i);
+	line[i] = rest[i];
+	if (rest[i] == '\n')
+		i++;
+	len = gnl_strlen(rest);
+	rest = gnl_memmove(rest, rest + i, len - i);
 	return (line);
 }
 
@@ -43,10 +42,12 @@ void	*gnl_calloc(size_t count, size_t size)
 {
 	size_t			i;
 	unsigned char	*p;
+	size_t			total_size;
 
-	if (count * size > 2147483647)
+	total_size = count * size;
+	if (count && (total_size / count) != size)
 		return (NULL);
-	p = (void *) malloc(count * size);
+	p = malloc(count * size);
 	if (!p)
 		return (NULL);
 	i = 0;
@@ -58,39 +59,47 @@ void	*gnl_calloc(size_t count, size_t size)
 	return (p);
 }
 
-unsigned long	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	len;
 
+	if (!s)
+		return (0);
 	len = 0;
 	while (s[len])
 		len++;
 	return (len);
 }
 
-char	*gnl_strjoin(char const *s1, char const *s2, int len)
+char	*gnl_strjoin(char *s1, char *s2, int len)
 {
 	char	*str;
-	int		size;
 	int		i;
 	int		j;
 
-	size = ft_strlen(s1) + len;
-	str = (char *) malloc (sizeof(const char) * (size + 1));
+	str = gnl_calloc (gnl_strlen(s1) + len + 1, 1);
 	if (!str)
+	{
+		if (s1)
+			free (s1);
 		return (NULL);
+	}
 	i = 0;
-	j = 0;
-	while (s1[j])
-		str[i++] = s1[j++];
+	if (s1)
+	{
+		j = 0;
+		while (s1[j])
+			str[i++] = s1[j++];
+	}
 	j = 0;
 	while (s2[j] && j < len)
 		str[i++] = s2[j++];
-	str[i] = 0;
+	if (s1)
+		free (s1);
 	return (str);
 }
 
-char	*ft_memmove(char *dst, char *src, size_t len)
+char	*gnl_memmove(char *dst, char *src, size_t len)
 {
 	size_t	l;
 
