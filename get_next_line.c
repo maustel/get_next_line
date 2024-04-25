@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maustel <maustel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:41:37 by maustel           #+#    #+#             */
-/*   Updated: 2023/11/30 11:47:10 by maustel          ###   ########.fr       */
+/*   Updated: 2024/04/25 08:59:16 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*free_rest(char **rest, char **line)
 {

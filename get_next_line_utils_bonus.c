@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maustel <maustel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:44:40 by maustel           #+#    #+#             */
-/*   Updated: 2023/11/30 11:47:55 by maustel          ###   ########.fr       */
+/*   Updated: 2024/04/25 08:59:04 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*write_line(char *rest)
 {
